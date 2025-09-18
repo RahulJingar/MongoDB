@@ -1,0 +1,623 @@
+Microsoft Windows [Version 10.0.26100.6584]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\rahul>mongosh
+Current Mongosh Log ID: 68cb8ae917453b483cb71235
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
+Using MongoDB:          8.0.5
+Using Mongosh:          2.4.2
+mongosh 2.5.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-09-17T10:52:24.358+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+Cars                 24.00 KiB
+ReactN              144.00 KiB
+admin                40.00 KiB
+authtestapp          72.00 KiB
+back                  8.00 KiB
+backend             188.00 KiB
+clg                  40.00 KiB
+config               60.00 KiB
+hari                112.00 KiB
+j                     8.00 KiB
+javaS                 8.00 KiB
+javaScri              8.00 KiB
+javaScriptApp       144.00 KiB
+javascript           72.00 KiB
+js                   16.00 KiB
+local               208.00 KiB
+miniProject          16.00 KiB
+mongo                80.00 KiB
+mongoDb             164.00 KiB
+myDataBase           80.00 KiB
+myapp                 8.00 KiB
+newJs                 8.00 KiB
+newUser             108.00 KiB
+object               72.00 KiB
+primary              60.00 KiB
+r                     8.00 KiB
+rahulProject         80.00 KiB
+rambd                 8.00 KiB
+randam               80.00 KiB
+random              680.00 KiB
+regex_DB            236.00 KiB
+test                 80.00 KiB
+testing             304.00 KiB
+testingthedatabase  144.00 KiB
+todoApp              80.00 KiB
+users                24.00 KiB
+test> use ReactN
+switched to db ReactN
+ReactN> show dbs
+Cars                 24.00 KiB
+ReactN              144.00 KiB
+admin                40.00 KiB
+authtestapp          72.00 KiB
+back                  8.00 KiB
+backend             188.00 KiB
+clg                  40.00 KiB
+config               60.00 KiB
+hari                112.00 KiB
+j                     8.00 KiB
+javaS                 8.00 KiB
+javaScri              8.00 KiB
+javaScriptApp       144.00 KiB
+javascript           72.00 KiB
+js                   16.00 KiB
+local               208.00 KiB
+miniProject          16.00 KiB
+mongo                80.00 KiB
+mongoDb             164.00 KiB
+myDataBase           80.00 KiB
+myapp                 8.00 KiB
+newJs                 8.00 KiB
+newUser             108.00 KiB
+object               72.00 KiB
+primary              60.00 KiB
+r                     8.00 KiB
+rahulProject         80.00 KiB
+rambd                 8.00 KiB
+randam               80.00 KiB
+random              680.00 KiB
+regex_DB            236.00 KiB
+test                 80.00 KiB
+testing             304.00 KiB
+testingthedatabase  144.00 KiB
+todoApp              80.00 KiB
+users                24.00 KiB
+ReactN> db.students.insertMany([
+...   { name: "Kuldeep", age: 22, course: "BCA", marks: 75 },
+...   { name: "Ravi", age: 23, course: "MCA", marks: 82 },
+...   { name: "Amit", age: 21, course: "B.Tech", marks: 45 },
+...   { name: "Neha", age: 20, course: "BCA", marks: 65 },
+...   { name: "Pooja", age: 24, course: "MCA", marks: 90 },
+...   { name: "Suresh", age: 19, course: "BBA", marks: 55 },
+...   { name: "Ankit", age: 22, course: "B.Tech", marks: 38 },
+...   { name: "Meena", age: 21, course: "BCA", marks: 72 },
+...   { name: "Rahul", age: 25, course: "MBA", marks: 68 },
+...   { name: "Simran", age: 23, course: "MCA", marks: 49 },
+...   { name: "Vikas", age: 20, course: "B.Com", marks: 60 },
+...   { name: "Deepak", age: 22, course: "BCA", marks: 40 },
+...   { name: "Kavita", age: 21, course: "MCA", marks: 88 },
+...   { name: "Arjun", age: 24, course: "B.Tech", marks: 95 },
+...   { name: "Preeti", age: 19, course: "BCA", marks: 30 },
+...   { name: "Manoj", age: 20, course: "BBA", marks: 77 },
+...   { name: "Rohit", age: 23, course: "MBA", marks: 52 },
+...   { name: "Jyoti", age: 22, course: "BCA", marks: 85 },
+...   { name: "Ashok", age: 21, course: "MCA", marks: 33 },
+...   { name: "Geeta", age: 25, course: "B.Tech", marks: 70 }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68cb8b6917453b483cb71236'),
+    '1': ObjectId('68cb8b6917453b483cb71237'),
+    '2': ObjectId('68cb8b6917453b483cb71238'),
+    '3': ObjectId('68cb8b6917453b483cb71239'),
+    '4': ObjectId('68cb8b6917453b483cb7123a'),
+    '5': ObjectId('68cb8b6917453b483cb7123b'),
+    '6': ObjectId('68cb8b6917453b483cb7123c'),
+    '7': ObjectId('68cb8b6917453b483cb7123d'),
+    '8': ObjectId('68cb8b6917453b483cb7123e'),
+    '9': ObjectId('68cb8b6917453b483cb7123f'),
+    '10': ObjectId('68cb8b6917453b483cb71240'),
+    '11': ObjectId('68cb8b6917453b483cb71241'),
+    '12': ObjectId('68cb8b6917453b483cb71242'),
+    '13': ObjectId('68cb8b6917453b483cb71243'),
+    '14': ObjectId('68cb8b6917453b483cb71244'),
+    '15': ObjectId('68cb8b6917453b483cb71245'),
+    '16': ObjectId('68cb8b6917453b483cb71246'),
+    '17': ObjectId('68cb8b6917453b483cb71247'),
+    '18': ObjectId('68cb8b6917453b483cb71248'),
+    '19': ObjectId('68cb8b6917453b483cb71249')
+  }
+}
+ReactN> db.students.find({marks: {$gt: 70}})
+[
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71236'),
+    name: 'Kuldeep',
+    age: 22,
+    course: 'BCA',
+    marks: 75
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71237'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123a'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123d'),
+    name: 'Meena',
+    age: 21,
+    course: 'BCA',
+    marks: 72
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71242'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71243'),
+    name: 'Arjun',
+    age: 24,
+    course: 'B.Tech',
+    marks: 95
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71245'),
+    name: 'Manoj',
+    age: 20,
+    course: 'BBA',
+    marks: 77
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71247'),
+    name: 'Jyoti',
+    age: 22,
+    course: 'BCA',
+    marks: 85
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124a'),
+    name: 'Kuldeep',
+    age: 22,
+    course: 'BCA',
+    marks: 75
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124b'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124e'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71251'),
+    name: 'Meena',
+    age: 21,
+    course: 'BCA',
+    marks: 72
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71256'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71257'),
+    name: 'Arjun',
+    age: 24,
+    course: 'B.Tech',
+    marks: 95
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71259'),
+    name: 'Manoj',
+    age: 20,
+    course: 'BBA',
+    marks: 77
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7125b'),
+    name: 'Jyoti',
+    age: 22,
+    course: 'BCA',
+    marks: 85
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7125e'),
+    name: 'Kuldeep',
+    age: 22,
+    course: 'BCA',
+    marks: 75
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7125f'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71262'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71265'),
+    name: 'Meena',
+    age: 21,
+    course: 'BCA',
+    marks: 72
+  }
+]
+Type "it" for more
+ReactN> db.students.find({marks: {$gt: 70}}).count()
+36
+ReactN> db.students.find({course: "MCA"})
+[
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71237'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123a'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123f'),
+    name: 'Simran',
+    age: 23,
+    course: 'MCA',
+    marks: 49
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71242'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71248'),
+    name: 'Ashok',
+    age: 21,
+    course: 'MCA',
+    marks: 33
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124b'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124e'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71253'),
+    name: 'Simran',
+    age: 23,
+    course: 'MCA',
+    marks: 49
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71256'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7125c'),
+    name: 'Ashok',
+    age: 21,
+    course: 'MCA',
+    marks: 33
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7125f'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71262'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71267'),
+    name: 'Simran',
+    age: 23,
+    course: 'MCA',
+    marks: 49
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7126a'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71270'),
+    name: 'Ashok',
+    age: 21,
+    course: 'MCA',
+    marks: 33
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71274'),
+    name: 'Lokesh',
+    age: 23,
+    course: 'MCA',
+    marks: 47
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7127a'),
+    name: 'Divya',
+    age: 23,
+    course: 'MCA',
+    marks: 59
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb71237'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb7123a'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb7123f'),
+    name: 'Simran',
+    age: 23,
+    course: 'MCA',
+    marks: 49
+  }
+]
+Type "it" for more
+ReactN> db.students.find({course: "MCA"}).limit(3)
+[
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71237'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123a'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123f'),
+    name: 'Simran',
+    age: 23,
+    course: 'MCA',
+    marks: 49
+  }
+]
+ReactN> db.students.find({course: "MCA"}).skip(3).limit(3)
+[
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71242'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71248'),
+    name: 'Ashok',
+    age: 21,
+    course: 'MCA',
+    marks: 33
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124b'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  }
+]
+ReactN> db.students.find().sort({marks: -1})
+[
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7126b'),
+    name: 'Arjun',
+    age: 24,
+    course: 'B.Tech',
+    marks: 95
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71243'),
+    name: 'Arjun',
+    age: 24,
+    course: 'B.Tech',
+    marks: 95
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71257'),
+    name: 'Arjun',
+    age: 24,
+    course: 'B.Tech',
+    marks: 95
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb71243'),
+    name: 'Arjun',
+    age: 24,
+    course: 'B.Tech',
+    marks: 95
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71273'),
+    name: 'Sneha',
+    age: 22,
+    course: 'BCA',
+    marks: 93
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b7123a'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb7123a'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71262'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7124e'),
+    name: 'Pooja',
+    age: 24,
+    course: 'MCA',
+    marks: 90
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b71278'),
+    name: 'Swati',
+    age: 20,
+    course: 'BCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7126a'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71242'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b71256'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb71242'),
+    name: 'Kavita',
+    age: 21,
+    course: 'MCA',
+    marks: 88
+  },
+  {
+    _id: ObjectId('68c8dfe42b7e1a0a33b7125b'),
+    name: 'Jyoti',
+    age: 22,
+    course: 'BCA',
+    marks: 85
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71247'),
+    name: 'Jyoti',
+    age: 22,
+    course: 'BCA',
+    marks: 85
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7126f'),
+    name: 'Jyoti',
+    age: 22,
+    course: 'BCA',
+    marks: 85
+  },
+  {
+    _id: ObjectId('68cb8b6917453b483cb71247'),
+    name: 'Jyoti',
+    age: 22,
+    course: 'BCA',
+    marks: 85
+  },
+  {
+    _id: ObjectId('68c8df712b7e1a0a33b71237'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  },
+  {
+    _id: ObjectId('68c8fb1e2b7e1a0a33b7125f'),
+    name: 'Ravi',
+    age: 23,
+    course: 'MCA',
+    marks: 82
+  }
+]
+Type "it" for more
+ReactN>
