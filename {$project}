@@ -75,7 +75,9 @@ test>
   { _id: ObjectId('68d39a38a82f803666b71239'), product: 'W' }
 ]
 Type "it" for more
-test> // Show only the amount and quantity fields.
+test> 
+
+// Show only the amount and quantity fields.
 
 test>
 ... db.sales.aggregate([
@@ -104,13 +106,9 @@ test>
   { amount: 400, quantity: 5 }
 ]
 Type "it" for more
+
 test> // Show only category and status fields.
 
-test>
-... db.sales.aggregate([
-...   {$project: {category: 1, status: 1, _Id: 0}}
-... ])
-MongoServerError[Location31254]: Invalid $project :: caused by :: Cannot do exclusion on field _Id in inclusion projection
 test>
 ... db.sales.aggregate([
 ...   {$project: {category: 1, status: 1, _id: 0}}
@@ -138,7 +136,9 @@ test>
   { status: 'A', category: 'Home Appliances' }
 ]
 Type "it" for more
-test> // Show only product and customerId fields.
+test> 
+
+// Show only product and customerId fields.
 
 test>
 ... db.sales.aggregate([
@@ -167,7 +167,9 @@ test>
   { product: 'W', customerId: ObjectId('649e1f2c67a5f54e6c000001') }
 ]
 Type "it" for more
-test> //Hide the date field and show all other fields.
+test> 
+
+//Hide the date field and show all other fields.
 
 test>
 ... db.sales.aggregate([
@@ -356,15 +358,15 @@ test>
   }
 ]
 Type "it" for more
-test> // Hide the _id field and show all other fields.
+test> 
+
+// Hide the _id field and show all other fields.
 
 test>
 ... db.sales.aggregate([
 ...   {$project: {_id: 0}}
 ... ])
-... db.sales.aggregate([
-...   {$project: {_id: 0}}
-... ])
+
 [
   {
     product: 'X',
@@ -548,13 +550,10 @@ test>
   }
 ]
 Type "it" for more
-test> // Show only product, amount, and category fields.
+test> 
 
-test>
-... db.sales.aggregate([
-...   {$$project: {product: 1, amount: 1, category: 1}}
-... ])
-MongoServerError[Location40324]: Unrecognized pipeline stage name: '$$project'
+// Show only product, amount, and category fields.
+
 test>
 ... db.sales.aggregate([
 ...   {$project: {product: 1, amount: 1, category: 1}}
@@ -682,6 +681,7 @@ test>
   }
 ]
 Type "it" for more
+
 test> // Show only customerId and totalAmount fields.
 
 test>
@@ -713,36 +713,6 @@ test>
 Type "it" for more
 test> // Show all fields except status.
 
-test>
-... db.sales.aggregate([
-...   {$project: {status: 1}}
-... ])
-... db.sales.aggregate([
-...   {$project: {status: 1}}
-... ])
-[
-  { _id: ObjectId('68d21d0745fa09ed82b71236'), status: 'A' },
-  { _id: ObjectId('68d21d0745fa09ed82b71237'), status: 'A' },
-  { _id: ObjectId('68d21d0745fa09ed82b71238'), status: 'B' },
-  { _id: ObjectId('68d21d0745fa09ed82b71239'), status: 'A' },
-  { _id: ObjectId('68d21d0745fa09ed82b7123a'), status: 'A' },
-  { _id: ObjectId('68d21d0745fa09ed82b7123b'), status: 'B' },
-  { _id: ObjectId('68d21d0745fa09ed82b7123c'), status: 'A' },
-  { _id: ObjectId('68d21d0745fa09ed82b7123d'), status: 'A' },
-  { _id: ObjectId('68d392077c4c9d5e31b71236'), status: 'A' },
-  { _id: ObjectId('68d392077c4c9d5e31b71237'), status: 'A' },
-  { _id: ObjectId('68d392077c4c9d5e31b71238'), status: 'B' },
-  { _id: ObjectId('68d392077c4c9d5e31b71239'), status: 'A' },
-  { _id: ObjectId('68d392077c4c9d5e31b7123a'), status: 'A' },
-  { _id: ObjectId('68d392077c4c9d5e31b7123b'), status: 'B' },
-  { _id: ObjectId('68d392077c4c9d5e31b7123c'), status: 'A' },
-  { _id: ObjectId('68d392077c4c9d5e31b7123d'), status: 'A' },
-  { _id: ObjectId('68d39a38a82f803666b71236'), status: 'A' },
-  { _id: ObjectId('68d39a38a82f803666b71237'), status: 'A' },
-  { _id: ObjectId('68d39a38a82f803666b71238'), status: 'B' },
-  { _id: ObjectId('68d39a38a82f803666b71239'), status: 'A' }
-]
-Type "it" for more
 test>
 ... db.sales.aggregate([
 ...   {$project: {status: 0}}
@@ -930,6 +900,7 @@ test>
   }
 ]
 Type "it" for more
+
 test> // Show only product, quantity, and date fields.
 
 test>
