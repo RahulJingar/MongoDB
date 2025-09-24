@@ -1,0 +1,197 @@
+Microsoft Windows [Version 10.0.26100.6584]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\rahul>mongosh
+Current Mongosh Log ID: 68d4346aad175942e9b71235
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
+Using MongoDB:          8.0.5
+Using Mongosh:          2.4.2
+mongosh 2.5.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-09-23T15:10:11.276+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> // Count how many orders are there for each category.
+
+test>
+... db.sales.aggregate([
+...   {$group: {
+...     _id: "$category",
+...     totalOrder: {$sum: 1}
+...   }}
+... ])
+[
+  { _id: 'Electronics', totalOrder: 80 },
+  { _id: 'Home Appliances', totalOrder: 48 }
+]
+test> // Calculate total amount spent for each customerId.
+
+test>
+... db.sales.aggregate([
+...   {$group: {
+...     _id: "$customerId",
+...     totalAmount: {$sum: 1}
+...   }}
+... ])
+[
+  { _id: ObjectId('649e1f2c67a5f54e6c000004'), totalAmount: 16 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000001'), totalAmount: 48 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000003'), totalAmount: 32 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000002'), totalAmount: 32 }
+]
+
+test>
+... db.sales.aggregate([
+...   {$group: {
+...     _id: "$customerId",
+...     totalAmount: {$sum: "$amount"}
+...   }}
+... ])
+[
+  { _id: ObjectId('649e1f2c67a5f54e6c000004'), totalAmount: 4800 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000001'), totalAmount: 15520 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000002'), totalAmount: 12000 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000003'), totalAmount: 4800 }
+]
+test> // Find the maximum amount spent by each customerId.
+
+test> db.sales.aggregate([
+...   {$group: {
+...     _id: "$customerId",
+...     totalAmount: {$max: "$amount"}
+...   }}
+... ])
+[
+  { _id: ObjectId('649e1f2c67a5f54e6c000003'), totalAmount: 180 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000002'), totalAmount: 500 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000001'), totalAmount: 450 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000004'), totalAmount: 300 }
+]
+test> 
+
+// Find the minimum amount spent by each customerId.
+
+test>
+... db.sales.aggregate([
+...   {$group: {
+...     _id: "$customerId",
+...     totalAmount: {$min: "$amount"}
+...   }}
+... ])
+[
+  { _id: ObjectId('649e1f2c67a5f54e6c000004'), totalAmount: 300 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000001'), totalAmount: 120 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000003'), totalAmount: 120 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000002'), totalAmount: 250 }
+]
+test> 
+
+// Calculate the total quantity sold for each product.
+
+test>
+...   db.sales.aggregate([
+...     {$group: {
+...       _id: "$product",
+...       totalQuantity: {$sum: "$quantity"}
+...     }}
+...   ])
+[
+  { _id: 'Y', totalQuantity: 112 },
+  { _id: 'W', totalQuantity: 80 },
+  { _id: 'X', totalQuantity: 80 },
+  { _id: 'Z', totalQuantity: 48 },
+  { _id: 'V', totalQuantity: 64 }
+]
+test> 
+
+// Count how many orders are there for each status (A, B, C).
+
+test>
+...   db.sales.aggregate([
+...     {$group: {
+...       _id: "$status",
+...       totalOrder: {$sum: 1}
+...     }}
+...   ])
+[ { _id: 'A', totalOrder: 96 }, { _id: 'B', totalOrder: 32 } ]
+test> 
+
+// Calculate the average amount for each category.
+
+test>
+...   db.sales.aggregate([
+...     {$group: {
+...       _id: "$category",
+...       totalAmount: {$avg: "$amount"}
+...     }}
+...   ])
+[
+  { _id: 'Electronics', totalAmount: 324 },
+  { _id: 'Home Appliances', totalAmount: 233.33333333333334 }
+]
+test> 
+
+// Find the highest single order amount for each customerId.
+
+test>   db.sales.aggregate([
+...     {$group: {
+...       _id: "$customerId",
+...       maxAmount: {$max: "$amount"}
+...     }}
+...   ])
+[
+  { _id: ObjectId('649e1f2c67a5f54e6c000001'), maxAmount: 450 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000002'), maxAmount: 500 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000004'), maxAmount: 300 },
+  { _id: ObjectId('649e1f2c67a5f54e6c000003'), maxAmount: 180 }
+]
+test>
+
+// Calculate total orders and total amount for each customerId.
+
+test>   db.sales.aggregate([
+...     {$group: {
+...       _id: "$customerId",
+...       totalOrder: {$sum: 1},
+...       totalAmount: {$sum: "$amount"}
+...     }}
+...   ])
+[
+  {
+    _id: ObjectId('649e1f2c67a5f54e6c000001'),
+    totalOrder: 48,
+    totalAmount: 15520
+  },
+  {
+    _id: ObjectId('649e1f2c67a5f54e6c000002'),
+    totalOrder: 32,
+    totalAmount: 12000
+  },
+  {
+    _id: ObjectId('649e1f2c67a5f54e6c000004'),
+    totalOrder: 16,
+    totalAmount: 4800
+  },
+  {
+    _id: ObjectId('649e1f2c67a5f54e6c000003'),
+    totalOrder: 32,
+    totalAmount: 4800
+  }
+]
+test> 
+
+// Calculate total revenue and average revenue for the entire collection.
+
+test>
+...   db.sales.aggregate([
+...     {$group: {
+...       _id: null,
+...       totalRevenue: {$sum: "$amount"},
+...       totalAverage: {$avg: "$amount"}
+...     }}
+...   ])
+[ { _id: null, totalRevenue: 37120, totalAverage: 290 } ]
