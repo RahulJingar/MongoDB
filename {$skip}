@@ -1,0 +1,1093 @@
+Microsoft Windows [Version 10.0.26100.6584]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\rahul>mongosh
+Current Mongosh Log ID: 68d43cb57d262b7dbfb71235
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
+Using MongoDB:          8.0.5
+Using Mongosh:          2.4.2
+mongosh 2.5.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-09-25T00:16:14.289+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> db.sales.insertMany([
+...  { "product": "X", "amount": 120, "status": "A", "category": "Electronics", "quantity": 3, "date":
+... ISODate("2024-01-01"), "customerId": ObjectId("649e1f2c67a5f54e6c000001") },
+...  { "product": "Y", "amount": 250, "status": "A", "category": "Electronics", "quantity": 1, "date":
+... ISODate("2024-01-02"), "customerId": ObjectId("649e1f2c67a5f54e6c000002") },
+...  { "product": "Z", "amount": 180, "status": "B", "category": "Home Appliances", "quantity": 2,
+... "date": ISODate("2024-01-03"), "customerId": ObjectId("649e1f2c67a5f54e6c000003") },
+...  { "product": "W", "amount": 400, "status": "A", "category": "Home Appliances", "quantity": 5,
+... "date": ISODate("2024-01-04"), "customerId": ObjectId("649e1f2c67a5f54e6c000001") },
+...  { "product": "V", "amount": 500, "status": "A", "category": "Electronics", "quantity": 4, "date":
+... ISODate("2024-01-05"), "customerId": ObjectId("649e1f2c67a5f54e6c000002") },
+...  { "product": "X", "amount": 300, "status": "B", "category": "Electronics", "quantity": 2, "date":
+... ISODate("2024-01-06"), "customerId": ObjectId("649e1f2c67a5f54e6c000004") },
+...  { "product": "Y", "amount": 120, "status": "A", "category": "Home Appliances", "quantity": 6,
+... "date": ISODate("2024-01-07"), "customerId": ObjectId("649e1f2c67a5f54e6c000003") },
+...  { "product": "Z", "amount": 450, "status": "A", "category": "Electronics", "quantity": 1, "date":
+... ISODate("2024-01-08"), "customerId": ObjectId("649e1f2c67a5f54e6c000001") }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68d43ccb7d262b7dbfb71236'),
+    '1': ObjectId('68d43ccb7d262b7dbfb71237'),
+    '2': ObjectId('68d43ccb7d262b7dbfb71238'),
+    '3': ObjectId('68d43ccb7d262b7dbfb71239'),
+    '4': ObjectId('68d43ccb7d262b7dbfb7123a'),
+    '5': ObjectId('68d43ccb7d262b7dbfb7123b'),
+    '6': ObjectId('68d43ccb7d262b7dbfb7123c'),
+    '7': ObjectId('68d43ccb7d262b7dbfb7123d')
+  }
+}
+test> // Skip the first 3 orders and show the rest.
+
+test> db.sales.aggregate([
+...     {$skip: 3}
+...   ])
+[
+  {
+    _id: ObjectId('68d21d0745fa09ed82b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  }
+]
+Type "it" for more
+test> // Skip the first 5 orders and show the remaining orders.
+
+test>
+...   db.sales.aggregate([
+...     {$skip: 5}
+...   ])
+[
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b7123e'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  }
+]
+Type "it" for more
+test> // Skip the first 2 orders and show the rest.
+
+test>
+...   db.sales.aggregate([
+...     {$skip: 2}
+...   ])
+[
+  {
+    _id: ObjectId('68d21d0745fa09ed82b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  }
+]
+Type "it" for more
+test> // Skip the first 10 orders and show the remaining orders.
+
+test>
+...   db.sales.aggregate([
+...     {$skip: 10}
+...   ])
+[
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b7123e'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b7123f'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b71240'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b71241'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b71242'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d3bf2fa82f803666b71243'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  }
+]
+Type "it" for more
+test> // Skip the first order and show all remaining orders.
+
+test>
+...   db.sales.aggregate([
+...     {$skip: 1}
+...   ])
+[
+  {
+    _id: ObjectId('68d21d0745fa09ed82b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d21d0745fa09ed82b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123b'),
+    product: 'X',
+    amount: 300,
+    status: 'B',
+    category: 'Electronics',
+    quantity: 2,
+    date: ISODate('2024-01-06T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000004')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123c'),
+    product: 'Y',
+    amount: 120,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 6,
+    date: ISODate('2024-01-07T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d392077c4c9d5e31b7123d'),
+    product: 'Z',
+    amount: 450,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-08T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71236'),
+    product: 'X',
+    amount: 120,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 3,
+    date: ISODate('2024-01-01T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71237'),
+    product: 'Y',
+    amount: 250,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 1,
+    date: ISODate('2024-01-02T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71238'),
+    product: 'Z',
+    amount: 180,
+    status: 'B',
+    category: 'Home Appliances',
+    quantity: 2,
+    date: ISODate('2024-01-03T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000003')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b71239'),
+    product: 'W',
+    amount: 400,
+    status: 'A',
+    category: 'Home Appliances',
+    quantity: 5,
+    date: ISODate('2024-01-04T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000001')
+  },
+  {
+    _id: ObjectId('68d39a38a82f803666b7123a'),
+    product: 'V',
+    amount: 500,
+    status: 'A',
+    category: 'Electronics',
+    quantity: 4,
+    date: ISODate('2024-01-05T00:00:00.000Z'),
+    customerId: ObjectId('649e1f2c67a5f54e6c000002')
+  }
+]
+Type "it" for more
+t
